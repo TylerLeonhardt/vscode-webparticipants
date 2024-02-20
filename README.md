@@ -1,8 +1,9 @@
-# Web Participants
+# Website Participants
 
 ## TODO
 
-- [ ] Improve web crawler to chunk websites better
-- [ ] Index TF-IDF of the websites better?
-- [ ] Improve prompt to be more accurate?
-- [ ] Add more management commands
+### Web Crawler
+- [ ] Improve web crawler chunking of sections so that we have smaller chunks
+
+### UX
+- [ ] Add agent for management too?

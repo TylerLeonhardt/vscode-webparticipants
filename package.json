@@ -16,11 +16,23 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [{
-      "command": "webParticipant.add",
-      "category": "Web Participants",
-      "title": "Add Website"
-    }]
+    "commands": [
+      {
+        "command": "webParticipants.add",
+        "category": "Web Participants",
+        "title": "Add Website"
+      },
+      {
+        "command": "webParticipants.list",
+        "category": "Web Participants",
+        "title": "List Websites"
+      },
+      {
+        "command": "webParticipants.deleteAll",
+        "category": "Web Participants",
+        "title": "Delete ALL Websites"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

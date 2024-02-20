@@ -9,8 +9,9 @@ export function registerListWebsitesCommand(context: ExtensionContext) {
         disposables.push(qp);
         qp.matchOnDetail = true;
         qp.placeholder = 'All registered websites...';
+        const addWebsite = { label: '$(add) Add website...' };
         qp.items = [
-            { label: '$(add) Add website...' },
+            addWebsite,
             { kind: QuickPickItemKind.Separator, label: '' },
             ...websites.map(w => ({
                 label: w.name,
@@ -30,7 +31,7 @@ export function registerListWebsitesCommand(context: ExtensionContext) {
                 deleteParticipant(selectedWebsite.name);
             }
             qp.items = [
-                { label: '$(add) Add website...' },
+                addWebsite,
                 { kind: QuickPickItemKind.Separator, label: '' },
                 ...websites.map(w => ({
                     label: w.name,
@@ -44,6 +45,11 @@ export function registerListWebsitesCommand(context: ExtensionContext) {
         }));
         disposables.push(qp.onDidHide(() => {
             Disposable.from(...disposables).dispose();
+        }));
+        disposables.push(qp.onDidChangeSelection(e => {
+            if (addWebsite === e[0]) {
+                commands.executeCommand('webParticipants.add');
+            }
         }));
         qp.show();
     });
